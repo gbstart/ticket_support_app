@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import { AppButton } from "./SubmitButton";
+import { SubmitButton } from "./SubmitButton";
 
 type AppModalProps = {
   open: boolean;
@@ -27,8 +27,8 @@ export const AppModal: React.FC<AppModalProps> = ({
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>
-        <AppButton label="Close" onClick={onClose} />
-        {onConfirm && <AppButton label="Confirm" onClick={onConfirm} />}
+        <SubmitButton label="Close" onClick={onClose} />
+        {onConfirm && <SubmitButton label="Confirm" onClick={onConfirm} />}
       </DialogActions>
     </Dialog>
   );
