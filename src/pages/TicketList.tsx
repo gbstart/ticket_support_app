@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useWebSocket } from "../hooks/useWebSocket";
 import { Ticket } from "../types/ticket";
-import { Box, TextField, MenuItem } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Box, TextField, MenuItem, Button } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import { SubmitButton } from "../components/SubmitButton";
 import { mockTickets } from "../data/data";
 import TitleSection from "../components/TitleSection";
+import { useTranslation } from "react-i18next";
 
 export const TicketList: React.FC = () => {
   const [tickets, setTickets] = useState<Ticket[]>(mockTickets);
   const [statusFilter, setStatusFilter] = useState<string>("");
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useWebSocket({
     url: process.env.WS_URL || "ws://localhost:8080/ws",
@@ -53,19 +55,23 @@ export const TicketList: React.FC = () => {
   return (
     <Box>
       <TitleSection />
-      <TextField
-        select
-        label="Filter by Status"
-        value={statusFilter}
-        onChange={(e) => setStatusFilter(e.target.value)}
-        sx={{ mb: 2, minWidth: 200 }}
-      >
-        <MenuItem value="">All</MenuItem>
-        <MenuItem value="open">Open</MenuItem>
-        <MenuItem value="in_progress">In Progress</MenuItem>
-        <MenuItem value="closed">Closed</MenuItem>
-      </TextField>
-
+      <Box sx={{ mb: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <TextField
+          select
+          label="Filter by Status"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+          sx={{ mb: 2, minWidth: 200 }}
+        >
+          <MenuItem value="">All</MenuItem>
+          <MenuItem value="open">Open</MenuItem>
+          <MenuItem value="in_progress">In Progress</MenuItem>
+          <MenuItem value="closed">Closed</MenuItem>
+        </TextField>
+        <Button component={Link} to="/create" variant="outlined">
+          {t("createTickets")}
+        </Button>
+      </Box>
       <div style={{ height: 500, width: "100%" }}>
         <DataGrid
           rows={filteredTickets}

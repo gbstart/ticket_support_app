@@ -1,11 +1,10 @@
 import React, { createContext, useContext, useMemo, useState, ReactNode } from "react";
 import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
 import { getDesignTokens } from "../theme";
+import { ThemeContextType } from "../types";
+import { ThemeMode } from "../enum";
 
-type ThemeContextType = {
-  toggleColorMode: () => void;
-  mode: "light" | "dark";
-};
+
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -16,9 +15,9 @@ export const useThemeContext = () => {
 };
 
 export const CustomThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<ThemeMode>(ThemeMode.Light);
 
-  const toggleColorMode = () => setMode((prev) => (prev === "light" ? "dark" : "light"));
+  const toggleColorMode = () => setMode((prev) => (prev === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light));
 
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
