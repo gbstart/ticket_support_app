@@ -7,6 +7,7 @@ import axiosInstance from "../utils/axiosInstance";
 import { SubmitButton } from "../components/SubmitButton";
 import { useToast } from "../context/ToastContext";
 import TitleSection from "../components/TitleSection";
+import { FileUpload } from "../components/FileUpload";
 
 const priorities: Priority[] = ["low", "medium", "high"];
 const availableTags: Tag[] = [
@@ -34,6 +35,7 @@ export const TicketCreateForm = () => {
     reset,
     setValue,
     watch,
+    control,
     formState: { errors },
   } = useForm<TicketFormValues>({
     defaultValues: {
@@ -123,8 +125,17 @@ export const TicketCreateForm = () => {
           }
           renderInput={(params) => <TextField {...params} label="Tags" />}
         />
-
-        <SubmitButton type="submit" variant="contained" label={"Create Ticket"} />
+        <FileUpload
+          name="attachment"
+          control={control}
+          accept={["image/*", "application/pdf", "video/*"]}
+          maxSizeMB={5}
+        />
+        <SubmitButton
+          type="submit"
+          variant="contained"
+          label={"Create Ticket"}
+        />
       </Box>
     </>
   );

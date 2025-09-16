@@ -58,8 +58,8 @@ export const mockTickets: Ticket[] = [
   },
     {
     id: "6",
-    subject: "Cannot login to account",
-    description: "User reports invalid credentials error.",
+    subject: "Ui Issue",
+    description: "Mobile user reports misaligned buttons on homepage.",
     status: "open",
     priority: "high",
     assignee: "Agent A",
@@ -69,7 +69,7 @@ export const mockTickets: Ticket[] = [
   },
     {
     id: "7",
-    subject: "Cannot login to account",
+    subject: "Can't access dashboard",
     description: "User reports invalid credentials error.",
     status: "open",
     priority: "high",
@@ -126,4 +126,7 @@ export const mockTickets: Ticket[] = [
 export const ticketsData: Ticket[] = [
   { id: "1", subject: "Issue #1", status: "open", priority: "low", assignee: "Agent A" },
   { id: "2", subject: "Issue #2", status: "in_progress", priority: "medium", assignee: "Agent B" },
+    { id: "3", subject: "Issue #3", status: "in_progress", priority: "medium", assignee: "Agent B" },
+  { id: "4", subject: "Issue #5", status: "in_progress", priority: "medium", assignee: "Agent B" },
+
 ];

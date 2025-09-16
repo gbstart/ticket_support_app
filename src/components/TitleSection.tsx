@@ -23,7 +23,7 @@ const TitleSection = () => {
           ES
         </Button>
       </Box>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom style={{color: '#1976d2', fontWeight: 'bold', textAlign: 'center', marginTop: '10px'}}>
         🎫 {t("supportTicketSystem")}
       </Typography>
       <MultiTabs tabs={[{ label: t("tickets"), path: "/" }]} />

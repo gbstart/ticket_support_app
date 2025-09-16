@@ -92,7 +92,12 @@ export const TicketDetail: React.FC<TicketDetailProps> = ({ ticket }) => {
         helperText={errors.description?.message}
       />
 
-      <AppInput select label="Priority" {...register("priority")}>
+      <AppInput
+        select
+        label="Priority"
+        {...register("priority")}
+        defaultValue={ticket.priority}
+      >
         {priorities.map((p) => (
           <MenuItem key={p} value={p}>
             {p}

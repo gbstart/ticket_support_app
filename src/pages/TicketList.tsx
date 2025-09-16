@@ -55,7 +55,7 @@ export const TicketList: React.FC = () => {
   return (
     <Box>
       <TitleSection />
-      <Box sx={{ mb: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <Box sx={{ mb: 2, display: "flex", flexDirection: {xs:"column",sm: "column", md:"row"}, justifyContent: "space-between", alignItems: "center" }}>
         <TextField
           select
           label="Filter by Status"
